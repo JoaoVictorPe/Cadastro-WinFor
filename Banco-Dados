@@ -1,0 +1,129 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SQLite;
+using System.IO;
+public class Aluno
+{
+    public int Id { get; set; }
+    public string Nome { get; set; }
+    public string DataNascimento { get; set; }
+    public string Curso { get; set; }
+    public string Telefone { get; set; }
+}
+public class BancoDados
+{
+    private static string caminhoBanco = "banco_de_dados.sqlite";
+
+    // Método para criar o banco de dados caso não exista
+    public static void CriarBanco()
+    {
+        if (!File.Exists(caminhoBanco))
+        {
+            SQLiteConnection.CreateFile(caminhoBanco);
+        }
+
+        using (var conn = new SQLiteConnection($"Data Source={caminhoBanco};Version=3;"))
+        {
+            conn.Open();
+            string sql = @"CREATE TABLE IF NOT EXISTS Alunos (
+                            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            Nome TEXT NOT NULL,
+                            DataNascimento TEXT NOT NULL,
+                            Curso TEXT NOT NULL,
+                            Telefone TEXT NOT NULL
+                           )";
+            using (var cmd = new SQLiteCommand(sql, conn))
+            {
+                cmd.ExecuteNonQuery();
+            }
+        }
+    }
+
+    // Método para inserir um aluno no banco
+    public static void InserirAluno(int Id, string nome, string dataNascimento, string curso, string telefone)
+    {
+        string caminhoBanco = "banco_de_dados.sqlite";
+        using (var conn = new SQLiteConnection($"Data Source={caminhoBanco};Version=3;"))
+        {
+            conn.Open();
+            string sql = "INSERT INTO Alunos (Nome, DataNascimento, Curso, Telefone) VALUES (@Nome, @DataNascimento, @Curso, @Telefone)";
+            using (var cmd = new SQLiteCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@Nome", nome);
+                cmd.Parameters.AddWithValue("@DataNascimento", dataNascimento);
+                cmd.Parameters.AddWithValue("@Curso", curso);
+                cmd.Parameters.AddWithValue("@Telefone", telefone);
+                cmd.ExecuteNonQuery();
+            }
+        }
+    }
+
+    // Método para listar os alunos
+    public static List<Aluno> ListarAlunos()
+    {
+        string caminhoBanco = "banco_de_dados.sqlite";
+        List<Aluno> alunos = new List<Aluno>();
+
+        using (var conn = new SQLiteConnection($"Data Source={caminhoBanco};Version=3;"))
+        {
+            conn.Open();
+            //string sql = "SELECT Id, Nome, DataNascimento, Curso, Telefone FROM Alunos"; // "Id" deve estar aqui
+            string sql = "SELECT Id, Nome, DataNascimento, Curso, Telefone  FROM Alunos";
+            using (var cmd = new SQLiteCommand(sql, conn))
+            {
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        alunos.Add(new Aluno
+                        {
+                            Id = Convert.ToInt32(reader["Id"]),
+                            Nome = reader["Nome"].ToString(),
+                            DataNascimento = reader["DataNascimento"].ToString(),
+                            Curso = reader["Curso"].ToString(),
+                            Telefone = reader["Telefone"].ToString()
+                        });
+                    }
+                }
+            }
+        }
+        return alunos;
+    }
+
+    // Método para atualizar um aluno
+    public static void AtualizarAluno(int id, string nome, string dataNascimento, string curso, string telefone)
+    {
+        string caminhoBanco = "banco_de_dados.sqlite";
+        using (var conn = new SQLiteConnection($"Data Source={caminhoBanco};Version=3;"))
+        {
+            conn.Open();
+            string sql = "UPDATE Alunos SET Nome = @Nome, DataNascimento = @DataNascimento, Curso = @Curso, Telefone = @Telefone WHERE Id = @Id";
+            using (var cmd = new SQLiteCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@Nome", nome);
+                cmd.Parameters.AddWithValue("@DataNascimento", dataNascimento);
+                cmd.Parameters.AddWithValue("@Curso", curso);
+                cmd.Parameters.AddWithValue("@Telefone", telefone);
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+    }
+
+    // Método para excluir um aluno
+    public static void ExcluirAluno(int id)
+    {
+        string caminhoBanco = "banco_de_dados.sqlite";
+        using (var conn = new SQLiteConnection($"Data Source={caminhoBanco};Version=3;"))
+        {
+            conn.Open();
+            string sql = "DELETE FROM Alunos WHERE Id = @Id";
+            using (var cmd = new SQLiteCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+    }
+}
