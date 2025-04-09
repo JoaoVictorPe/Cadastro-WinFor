@@ -1,0 +1,126 @@
+using System;
+using System.Data;
+using System.Data.SQLite;
+using System.Windows.Forms;
+using System.IO;
+using System.Collections.Generic;
+namespace Cadastro_de_alunos
+{
+    public partial class cadrastro : Form
+    {
+        private int alunoSelecionadoId;
+        string conexaoString = "Data Source=escola.db;Version=3;";
+        public cadrastro()
+        {
+            InitializeComponent();
+            BancoDados.CriarBanco();
+            AtualizarDataGrid();
+
+        }
+
+
+        private void AtualizarDataGrid()
+        {
+            alunoBindingSource.DataSource = null; // Limpa os dados anteriores
+            alunoBindingSource.DataSource = BancoDados.ListarAlunos(); // Pega os novos dados do banco
+            alunoBindingSource.DataSource = BancoDados.ListarAlunos();
+        }
+        private void LimparCampos()
+        {
+            txtNome.Text = "";
+            txtDatanacimento.Text = "";
+            txtCurso.Text = "";
+            txtTelefone.Text = "";
+            alunoSelecionadoId = -1;
+        }
+        private void cadrastro_Load(object sender, EventArgs e)
+        {
+            string conexaoString = "Data Source=escola.db";
+
+            using (var conexao = new SQLiteConnection(conexaoString))
+            {
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+          
+        }
+
+        private void dbnCadastra_Click(object sender, EventArgs e)
+        {
+            string nome = txtNome.Text;
+            string dataNascimento = txtDatanacimento.Text;
+            string curso = txtCurso.Text;
+            string telefone = txtTelefone.Text;
+            if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(dataNascimento) || string.IsNullOrWhiteSpace(curso) || string.IsNullOrWhiteSpace(telefone))
+            {
+                MessageBox.Show("Preencha todos os campos.");
+                return;
+            }
+            else
+            {
+                BancoDados.InserirAluno(nome, dataNascimento, curso, telefone);
+                AtualizarDataGrid();
+                txtNome.Clear();
+                txtDatanacimento.Clear();
+                txtCurso.Clear();
+                txtTelefone.Clear();
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (alunoSelecionadoId != -1)
+            {
+                BancoDados.AtualizarAluno(alunoSelecionadoId, txtNome.Text, txtDatanacimento.Text, txtCurso.Text, txtTelefone.Text);
+                AtualizarDataGrid();
+                LimparCampos();
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (alunoSelecionadoId != -1)
+            {
+                BancoDados.ExcluirAluno(alunoSelecionadoId);
+                AtualizarDataGrid();
+                LimparCampos();
+            }
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > 0)
+            {
+
+                alunoSelecionadoId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Id"].Value);
+                txtNome.Text = ((dataGridView1.Rows[e.RowIndex].Cells["Nome"].Value.ToString()));
+                string dataNascimento = ((dataGridView1.Rows[e.RowIndex].Cells["DataNascimento"].Value.ToString()));
+                txtDatanacimento.Text = DateTime.Parse(dataNascimento).ToString("dd/MM/yyyy");
+                txtCurso.Text = ((dataGridView1.Rows[e.RowIndex].Cells["Curso"].Value.ToString()));
+                txtTelefone.Text = ((dataGridView1.Rows[e.RowIndex].Cells["Telefone"].Value.ToString()));
+            }
+        }
+    }
+}
