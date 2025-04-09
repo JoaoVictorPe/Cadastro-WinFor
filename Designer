@@ -1,0 +1,257 @@
+﻿namespace Cadastro_de_alunos
+{
+    partial class cadrastro
+    {
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            components = new System.ComponentModel.Container();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            txtNome = new TextBox();
+            txtCurso = new TextBox();
+            txtTelefone = new TextBox();
+            btnCadastra = new Button();
+            btnEditar = new Button();
+            btnExcluir = new Button();
+            dataGridView1 = new DataGridView();
+            idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nomeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataNascimentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cursoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            telefoneDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            alunoBindingSource = new BindingSource(components);
+            alunoBindingSource1 = new BindingSource(components);
+            txtDatanacimento = new MaskedTextBox();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)alunoBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)alunoBindingSource1).BeginInit();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 25);
+            label1.Name = "label1";
+            label1.Size = new Size(93, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Nome do aluno:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 110);
+            label2.Name = "label2";
+            label2.Size = new Size(110, 15);
+            label2.TabIndex = 1;
+            label2.Text = "Data de nacimento:";
+            label2.Click += label2_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(511, 25);
+            label3.Name = "label3";
+            label3.Size = new Size(41, 15);
+            label3.TabIndex = 2;
+            label3.Text = "Curso:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(511, 100);
+            label4.Name = "label4";
+            label4.Size = new Size(48, 15);
+            label4.TabIndex = 3;
+            label4.Text = "Telefoe:";
+            label4.Click += label4_Click;
+            // 
+            // txtNome
+            // 
+            txtNome.Location = new Point(12, 43);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(188, 23);
+            txtNome.TabIndex = 1;
+            txtNome.TextChanged += textBox1_TextChanged;
+            // 
+            // txtCurso
+            // 
+            txtCurso.Location = new Point(511, 43);
+            txtCurso.Name = "txtCurso";
+            txtCurso.Size = new Size(203, 23);
+            txtCurso.TabIndex = 2;
+            // 
+            // txtTelefone
+            // 
+            txtTelefone.Location = new Point(511, 118);
+            txtTelefone.Name = "txtTelefone";
+            txtTelefone.Size = new Size(203, 23);
+            txtTelefone.TabIndex = 4;
+            // 
+            // btnCadastra
+            // 
+            btnCadastra.Location = new Point(106, 277);
+            btnCadastra.Name = "btnCadastra";
+            btnCadastra.Size = new Size(75, 23);
+            btnCadastra.TabIndex = 5;
+            btnCadastra.Text = "Cadastrar";
+            btnCadastra.UseVisualStyleBackColor = true;
+            btnCadastra.Click += dbnCadastra_Click;
+            // 
+            // btnEditar
+            // 
+            btnEditar.Location = new Point(349, 277);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(75, 23);
+            btnEditar.TabIndex = 6;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
+            // 
+            // btnExcluir
+            // 
+            btnExcluir.Location = new Point(578, 277);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(75, 23);
+            btnExcluir.TabIndex = 7;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.UseVisualStyleBackColor = true;
+            btnExcluir.Click += btnExcluir_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToOrderColumns = true;
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, nomeDataGridViewTextBoxColumn, dataNascimentoDataGridViewTextBoxColumn, cursoDataGridViewTextBoxColumn, telefoneDataGridViewTextBoxColumn });
+            dataGridView1.DataSource = alunoBindingSource;
+            dataGridView1.Location = new Point(106, 346);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(547, 228);
+            dataGridView1.TabIndex = 12;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            idDataGridViewTextBoxColumn.HeaderText = "Id";
+            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
+            nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
+            nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            // 
+            // dataNascimentoDataGridViewTextBoxColumn
+            // 
+            dataNascimentoDataGridViewTextBoxColumn.DataPropertyName = "DataNascimento";
+            dataNascimentoDataGridViewTextBoxColumn.HeaderText = "DataNascimento";
+            dataNascimentoDataGridViewTextBoxColumn.Name = "dataNascimentoDataGridViewTextBoxColumn";
+            // 
+            // cursoDataGridViewTextBoxColumn
+            // 
+            cursoDataGridViewTextBoxColumn.DataPropertyName = "Curso";
+            cursoDataGridViewTextBoxColumn.HeaderText = "Curso";
+            cursoDataGridViewTextBoxColumn.Name = "cursoDataGridViewTextBoxColumn";
+            // 
+            // telefoneDataGridViewTextBoxColumn
+            // 
+            telefoneDataGridViewTextBoxColumn.DataPropertyName = "Telefone";
+            telefoneDataGridViewTextBoxColumn.HeaderText = "Telefone";
+            telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
+            // 
+            // alunoBindingSource
+            // 
+            alunoBindingSource.DataSource = typeof(Aluno);
+            // 
+            // alunoBindingSource1
+            // 
+            alunoBindingSource1.DataSource = typeof(Aluno);
+            // 
+            // txtDatanacimento
+            // 
+            txtDatanacimento.Location = new Point(12, 140);
+            txtDatanacimento.Mask = "00/00/0000";
+            txtDatanacimento.Name = "txtDatanacimento";
+            txtDatanacimento.Size = new Size(188, 23);
+            txtDatanacimento.TabIndex = 13;
+            // 
+            // cadrastro
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 652);
+            Controls.Add(txtDatanacimento);
+            Controls.Add(dataGridView1);
+            Controls.Add(btnExcluir);
+            Controls.Add(btnEditar);
+            Controls.Add(btnCadastra);
+            Controls.Add(txtTelefone);
+            Controls.Add(txtCurso);
+            Controls.Add(txtNome);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "cadrastro";
+            Text = "cadastro";
+            Load += cadrastro_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)alunoBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)alunoBindingSource1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private TextBox txtNome;
+        private TextBox txtCurso;
+        private TextBox txtTelefone;
+        private Button btnCadastra;
+        private Button btnEditar;
+        private Button btnExcluir;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataNascimentoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn cursoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
+        private BindingSource alunoBindingSource;
+        private BindingSource alunoBindingSource1;
+        private MaskedTextBox txtDatanacimento;
+    }
+}
